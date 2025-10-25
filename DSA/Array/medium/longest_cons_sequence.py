@@ -6,13 +6,20 @@ def longest_cons_sequence(l):
     finalr=[]
     minlen=0
     while i<len(l):
+        r=[l[i]]
         j=i+1
-        if l[j]-l[i]==1:
-            r.append(l[i])
+        while j<len(l) and l[j]-l[j-1]==1:
+            r.append(l[j])
+            j=j+1
             if len(r)>minlen:
+                minlen=len(r)
                 finalr.extend(r)
+
+            i=j
     return finalr
 
-print(longest_cons_sequence(l)
+
+
+print(longest_cons_sequence(l))
 
         
