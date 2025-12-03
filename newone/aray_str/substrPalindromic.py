@@ -1,0 +1,15 @@
+def longest_palindrome(s):
+    def expand(l, r):
+        while l >= 0 and r < len(s) and s[l] == s[r]:
+            l -= 1
+            r += 1
+        return s[l+1:r]
+
+    res = ""
+    for i in range(len(s)):
+        # Odd length palindrome
+        res = max(res, expand(i, i), expand(i, i+1), key=len)
+    return res
+
+# Example
+print(longest_palindrome("babad"))  # Output: "bab" or "aba"
